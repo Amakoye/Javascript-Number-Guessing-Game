@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Number Guessing Game</title>
+    <!--This game, when loaded into a web browser, will
+challenge the player to guess a number from 1 to 100 in as few guesses as possible-->
+  </head>
+  <body>
+<script type="text/javascript">
+    //script variables
+    var randomNo = 0;
+    var gameOver = false;
+    var keepPlaying = false;
+    var guess = "";
+    var msg = "I am thinking  of a number from 1-100. Try to guess it:";
+    var reply = "";
+
+    //this loop allows the player to play as many games as desired
+    while(gameOver==false){
+      //generate a number from 1-100
+      randomNo = 1 + Math.random() * 99;
+
+      // turn the number into an integer
+      randomNo = Math.round(randomNo);
+
+      //set a value to indicate that the current round of play should continue
+      keepPlaying = false;
+
+      //loop until the player guesses the secret Number
+      while(keepPlaying==false){
+        //prompt the player to guess the secret Number
+        guess = window.prompt(msg + randomNo);
+
+        //analyze the player guess
+        if(guess == randomNo){
+          window.alert("Correct! You guessed the Number");
+          reply = window.prompt("Would like to play again? (y/n)");
+
+          //see if the player wants to play again
+          if(reply == "y"){
+            keepPlaying = true;
+            gameOver = false;
+          }else{
+            //let the current round of play continue
+            keepPlaying = true;
+            gameOver = true;
+          }
+        }else{
+          //see if the player's guess is too high
+          if(guess>randomNo){
+            window.alert("Incorrect. Your Guess is too high");
+          }else{
+            //see if the player's guess is too low
+            var Rand = randomNo+1;
+            var rand = randomNo-1;
+            if((guess==Rand)||(guess==rand)){
+              window.alert("Youre almost there, keep trying");
+            }else{
+              window.alerT("Incorrect. Your Guess is too low");
+            }
+          }
+        }
+      }
+    }
+    window.alert("Game Over. Thanks for playing")
+
+
+</script>
+
+  </body>
+</html>
